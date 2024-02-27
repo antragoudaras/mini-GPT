@@ -1,0 +1,28 @@
+#!/bin/bash
+
+#SBATCH --partition=gpu
+#SBATCH --gpus=1
+#SBATCH --job-name=gpt2-scratch-training
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --time=00:10:00
+#SBTACH --mem=32000M
+#SBATCH --output=training-gpt2-gen-starting-from-scratch-%A.out
+#SBATCH --error=training-gpt2-gen-starting-from-scratch-%A.err
+
+
+module purge
+module load 2022
+module load Anaconda3/2022.05
+
+# Your job starts in the directory where you call sbatch
+# SRC_DIR=/scratch-local/${USER}/DL1/assignment3/part3
+
+# Activate your environment
+source activate dl2023
+
+TXT_FILE=tiny_shakespear.txt
+LOG_DIR=logs_scratch
+
+echo "Launch training"
+python train.py --txt_file "./assets/${TXT_FILE}" --log_dir "./${LOG_DIR}" --progress_bar

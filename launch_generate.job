@@ -1,0 +1,25 @@
+#!/bin/bash
+
+#SBATCH --partition=gpu
+#SBATCH --gpus=1
+#SBATCH --job-name=gpt2-medium-gen
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --time=00:10:00
+#SBTACH --mem=32000M
+#SBATCH --output=gpt2-generate-%A.out
+#SBATCH --error=gpt2-generate-%A.err
+
+
+module purge
+module load 2022
+module load Anaconda3/2022.05
+
+# Your job starts in the directory where you call sbatch
+# SRC_DIR=/scratch-local/${USER}/DL1/assignment3/part3
+
+# Activate your environment
+source activate dl2023
+
+echo "Starting generating with gpt2-medium"
+python generate.py
