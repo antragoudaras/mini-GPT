@@ -1,6 +1,6 @@
 # GPT2
 
-We  train our own GPT2 model on predicting next characters. The code is structured in the following way:
+Train your own GPT2 model on predicting next characters. The code is structured in the following way:
 * `dataset.py`: Contains a function for creating and preparing the dataset.
 * `gpt.py`: Contains template classes for the Encoder, Decoder, Discriminator and the overall Adversarial Autoencoder.
 * `train.py`: Contains the overall procedure of assignment, it parses terminal commands by user, then it sets the hyper-parameters, load dataset, initialize the model, set the optimizers and then
